@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resume Submission</title>
+    <nav>
+        <link rel="stylesheet" href="Projectsubmissoin.css">
+	<a href="project submission.html">Home</a>
+    &nbsp;
+    <a href="Humber Contract form.html">Contract</a>
+    &nbsp;
+	<a href="projectresume.html">Resume</a>
+    &nbsp;
+	<a href="bio.html">Bio</a>
+    &nbsp;
+    <a href="programmingproject.html">Other Projects</a>
+	
+</head>
+<body>
+	<div class="container">
+		<h1>Submit Your Resume</h1>
+		<form id="resume-form">
+			<label for="resume">Add Your Resume To The DropBox:</label>
+			<input type="file" id="resume" name="resume">
+			<button type="submit" class="btn">Submit</button>
+		</form>
+	</div>
+
+	<script>
+		var form = document.getElementById('resume-form');
+    form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    var fileInput = document.getElementById('resume');
+    var file = fileInput.files[0];
+    if (!file) {
+        alert('Please select a file to upload.');
+        return;
+    }
+    var fileName = file.name;
+
+    var options = {
+        files: [
+            {name: fileName, file: file}
+        ]
+    };
+
+    Dropbox.save(options, function() {
+        alert('Resume submitted successfully!');
+        var resumeDisplay = document.getElementById('resume-display');
+        resumeDisplay.innerHTML = '<p>Uploaded resume: ' + fileName + '</p>';
+    });
+});
+
+	</script>
+    <br>
+    	<footer>
+            <p>&copy; 2023 My Website. All rights reserved.</p>
+        </footer>    
+</body>
+</html>

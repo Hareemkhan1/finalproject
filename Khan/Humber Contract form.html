@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <nav>
+        <link rel="stylesheet" href="Projectsubmissoin.css">
+	<a href="project submission.html">Home</a>
+    &nbsp;
+    <a href="Humber Contract form.html">Contract</a>
+    &nbsp;
+	<a href="projectresume.html">Resume</a>
+    &nbsp;
+	<a href="bio.html">Bio</a>
+    &nbsp;
+    <a href="programmingproject.html">Other Projects</a>
+    </nav>
+
+<title>Humber Professional Contract Form</title>
+<h1>Humber Contract Form</h1>
+<div> This form will be used to register you into a professional field</div>
+</head>
+<body>
+    <br>
+    <form id="contract-form">
+        <table align="center" border="1">
+            <tr>
+                 <td>First Name</td>
+                 <td><input type="text" id="FirstName" name="FirstName" max="30" required></td>
+            </tr>
+            <tr>&nbsp;</tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" id="LastName" name="LastName" max="30" required></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="text" id="PhoneNumber" name="PhoneNumber" max="30" required></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" id="HomeAddress" name="HomeAddress" max="30" required></td>
+            </tr>
+            <tr>
+                <td>Humber Username</td>
+                <td><input type="text" id="HumberUsername" name="HumberUsername" max="30" required></td>
+            </tr>
+            <tr>
+                <td>Humber Password</td>
+                <td><input type="password" id="HumberPassword" name="HumberPassword" max="30" required></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table align="center">
+            <tr>
+                <td><input type="submit" name="Button1" id="Button1" value="Submit"></td>
+                <td><input type="button" name="Button2" id="Button2" value="Clear" onclick="clearForm()"></td>
+            </tr>
+        </table>
+    </form>
+<footer>
+    <p>&copy; 2023 My Website. All rights reserved.</p>
+</footer>
+
+<script>
+    function clearForm() {
+        document.getElementById("contract-form").reset();
+    }
+
+    document.getElementById("contract-form").addEventListener("submit", function(event) {
+        var requiredFields = ["FirstName", "LastName", "PhoneNumber", "HomeAddress", "HumberUsername", "HumberPassword"];
+        var formIsValid = true;
+        for (var i = 0; i < requiredFields.length; i++) {
+            var fieldName = requiredFields[i];
+            var fieldValue = document.getElementById(fieldName).value;
+            if (fieldValue === "") {
+                formIsValid = false;
+                break;
+            }
+        }
+        if (!formIsValid) {
+            event.preventDefault();
+            alert("Please fill out all required fields.");
+        } else {
+            alert("Form submitted successfully!");
+        }
+    });
+</script>
+</body>
+</html>
